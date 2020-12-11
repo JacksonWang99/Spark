@@ -126,18 +126,31 @@ Spark SQL
 -----------------------------
 Table is one of the most commonly used ways to present data.Table has (relatively) stable data structure
 Transform RDDs using SQL
-Spark SQL is not about SQL
+Spark SQL is not about SQL：Aims to Create and Run Spark Programs Faster
 
 
 # DataFrame
 SparkSession是使用Dataset和DataFrameAPI编程Spark的入口点
+SparkSession is the entry point to programming Spark with the Dataset and DataFrame API.
 
+## Creating DataFrames
+举例
+spark = SparkSession.builder.config(conf=conf).getOrCreate()
+df = spark.read.format(”json”).load(”example.json")
 
 ## DataFrame Operations
 	1. registerTempTable()  change table name
-	2. show(), cache(), select(), alias()重命名
-	3. filter() 过滤， orderBy() 排序， groupBy() 分组， join() 
+	2. show(), cache(), printSchema(), select(), alias()重命名
+	3. filter() 过滤， count()计数, orderBy() 排序, groupBy() 分组, join() 
 	4. Writing/save DataFrames
+
+Transformation examples: filter,select,drop,intersect,join
+Action examples: count,collect ,show ,head ,take
+DataFrames use columnar storage(柱状存储),Transpose of row-based storage,Data in each column (with the same type) are packed together
+
+
+
+
 
 
 
